@@ -122,13 +122,6 @@ public class Game extends JPanel implements KeyListener {
         if (gameForTwo && snake2.getBounds().intersects(specialApple.getBounds())) {
             startGame = false;
         }
-        if (snake1.intersects()) {
-            startGame = false;
-        }
-        if (gameForTwo && snake2.intersects()) {
-            startGame = false;
-        }
-
         // Zkontrolujeme, zda první had opustil hranice obrazovky.
         if (snake1.getX() < 0 || snake1.getX() >= 600|| snake1.getY() < 0 || snake1.getY() >= 600) {
             startGame = false;
@@ -150,6 +143,7 @@ public class Game extends JPanel implements KeyListener {
         super.paintComponent(g);
 
         snake1.paint(g);
+        g.setColor(Color.GRAY);
 
         if (gameForTwo) {
             snake2.paint(g);

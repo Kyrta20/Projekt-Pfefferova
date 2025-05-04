@@ -85,6 +85,9 @@ public class Snake {
     public Point getHead() {
         return parts.get(0);  // Return the first part (head)
     }
+    public ArrayList<Point> getParts() {
+        return parts;  // Return all parts of the snake
+    }
     public void paint(Graphics g) {
 
         for (Point part : parts) {
