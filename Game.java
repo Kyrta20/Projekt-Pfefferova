@@ -111,8 +111,27 @@ public class Game extends JPanel implements KeyListener {
                 apple = new Apples(new Random().nextInt(39) * 10, new Random().nextInt(39) * 10);
             }
         }
+        if (gameForTwo) {
+
+            Point snake2Head = snake2.getHead();
+            for (int i = 0; i < snake1.getParts().size(); i++) {
+                Point snake1Part = snake1.getParts().get(i);
+                if (snake2Head.x == snake1Part.x && snake2Head.y == snake1Part.y) {
+                    startGame = false;
+                    break;
+                }
+            }
 
 
+            Point snake1Head = snake1.getHead();
+            for (int i = 0; i < snake2.getParts().size(); i++) {
+                Point snake2Part = snake2.getParts().get(i);
+                if (snake1Head.x == snake2Part.x && snake1Head.y == snake2Part.y) {
+                    startGame = false;
+                    break;
+                }
+            }
+        }
         // Zkontrolujeme, zda první had snědl speciální jablko.
         if (snake1.getBounds().intersects(specialApple.getBounds())) {
             startGame = false;
